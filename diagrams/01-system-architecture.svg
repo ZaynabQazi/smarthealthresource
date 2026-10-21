@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="Inter, Arial, sans-serif">
+  <rect width="900" height="560" fill="#f7f3e9" rx="8"/>
+  <text x="450" y="38" text-anchor="middle" font-size="20" font-weight="800" fill="#0d4b3c">System Architecture</text>
+  <text x="450" y="58" text-anchor="middle" font-size="11" fill="#64756e">Smart Health Resource Allocator — Component Overview</text>
+
+  <!-- Browser -->
+  <rect x="330" y="80" width="240" height="60" rx="8" fill="#0d4b3c"/>
+  <text x="450" y="107" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">Browser (NGO User)</text>
+  <text x="450" y="125" text-anchor="middle" font-size="10" fill="#b9d4c5">HTML + CSS + JavaScript SPA</text>
+
+  <!-- Arrow down -->
+  <line x1="450" y1="140" x2="450" y2="170" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Node.js Server -->
+  <rect x="200" y="175" width="500" height="50" rx="8" fill="#148064"/>
+  <text x="450" y="200" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">Node.js HTTP Server (Zero-Framework, Zero Dependencies)</text>
+  <text x="450" y="216" text-anchor="middle" font-size="10" fill="#d9eadf">server.js — Routes, Auth Gate, Static Serving</text>
+
+  <!-- Arrows down to modules -->
+  <line x1="300" y1="225" x2="300" y2="260" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="225" x2="450" y2="260" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="225" x2="600" y2="260" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Auth Module -->
+  <rect x="195" y="265" width="210" height="75" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="300" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Auth Module</text>
+  <text x="300" y="305" text-anchor="middle" font-size="9" fill="#64756e">database.js</text>
+  <text x="300" y="320" text-anchor="middle" font-size="9" fill="#64756e">scrypt hashing · session tokens</text>
+  <text x="300" y="333" text-anchor="middle" font-size="9" fill="#64756e">HttpOnly cookies · 24h expiry</text>
+
+  <!-- Chat Engine -->
+  <rect x="345" y="265" width="210" height="75" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="450" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Chat Engine</text>
+  <text x="450" y="305" text-anchor="middle" font-size="9" fill="#64756e">chatEngine.js</text>
+  <text x="450" y="320" text-anchor="middle" font-size="9" fill="#64756e">Deterministic rule-based answers</text>
+  <text x="450" y="333" text-anchor="middle" font-size="9" fill="#64756e">Multilingual (EN / UR / Roman UR)</text>
+
+  <!-- External Sources -->
+  <rect x="495" y="265" width="210" height="75" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="600" y="290" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">External Sources</text>
+  <text x="600" y="305" text-anchor="middle" font-size="9" fill="#64756e">externalSources.js</text>
+  <text x="600" y="320" text-anchor="middle" font-size="9" fill="#64756e">WHO · NDMA · Census · BHU</text>
+  <text x="600" y="333" text-anchor="middle" font-size="9" fill="#64756e">Rescue 1122 · OSM · SES · PBS</text>
+
+  <!-- Arrows down from modules -->
+  <line x1="300" y1="340" x2="300" y2="375" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="340" x2="450" y2="375" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="600" y1="340" x2="600" y2="375" stroke="#148064" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- SQLite -->
+  <rect x="210" y="380" width="180" height="55" rx="8" fill="#0d4b3c"/>
+  <text x="300" y="404" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">SQLite (users.db)</text>
+  <text x="300" y="420" text-anchor="middle" font-size="9" fill="#b9d4c5">users + sessions tables</text>
+
+  <!-- Dataset -->
+  <rect x="360" y="380" width="180" height="55" rx="8" fill="#0d4b3c"/>
+  <text x="450" y="404" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">villages.json</text>
+  <text x="450" y="420" text-anchor="middle" font-size="9" fill="#b9d4c5">15 supplied location records</text>
+
+  <!-- Optional Grok -->
+  <rect x="510" y="380" width="180" height="55" rx="8" fill="#fff" stroke="#dce4d9" stroke-dasharray="4"/>
+  <text x="600" y="400" text-anchor="middle" font-size="11" font-weight="700" fill="#64756e">Optional: Grok API</text>
+  <text x="600" y="416" text-anchor="middle" font-size="9" fill="#64756e">Fallback rephrasing only</text>
+
+  <!-- Frontend Files -->
+  <rect x="100" y="465" width="700" height="65" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="450" y="487" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Frontend (src/)</text>
+  <text x="200" y="510" text-anchor="middle" font-size="10" fill="#64756e">index.html</text>
+  <text x="325" y="510" text-anchor="middle" font-size="10" fill="#64756e">styles.css + additions.css</text>
+  <text x="480" y="510" text-anchor="middle" font-size="10" fill="#64756e">app.js (core engine)</text>
+  <text x="640" y="510" text-anchor="middle" font-size="10" fill="#64756e">enhancements.js (auth + extensions)</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#148064"/>
+    </marker>
+  </defs>
+</svg>

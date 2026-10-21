@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Smart Health Resource Allocator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="additions.css">
+</head>
+<body>
+  <section id="login-screen" hidden></section>
+  <div id="app-shell">
+    <aside><div class="brand"><span>✚</span><div>Alkhidmat<small>SMART HEALTH ALLOCATOR</small></div></div><nav id="nav"></nav><div class="side-note">Healthcare resource allocation decision support.<br><b>Final decision remains with the NGO officer.</b></div></aside>
+    <main><header><div><h1 id="title">Resource allocation, made explainable.</h1></div><div class="top-actions"><button id="language" class="outline">اردو</button><button class="primary" onclick="go('assistant')">Ask the AI assistant</button><button class="outline" onclick="logout()">Logout</button></div></header><section id="app"><div class="loading">Loading verified location data…</div></section></main>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="app.js"></script><script src="enhancements.js"></script><script src="emergency.js"></script>
+</body>
+</html>

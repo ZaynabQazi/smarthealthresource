@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" font-family="Inter,Arial,sans-serif">
+  <rect width="800" height="450" fill="#f7f3e9"/>
+  <text x="400" y="35" text-anchor="middle" font-size="20" font-weight="800" fill="#0d4b3c">Entity-Relationship Diagram (ERD)</text>
+  <text x="400" y="55" text-anchor="middle" font-size="11" fill="#64756e">SQLite Database Schema — users &amp; sessions tables</text>
+
+  <rect x="60" y="100" width="310" height="280" rx="8" fill="#fff" stroke="#0d4b3c" stroke-width="2"/>
+  <rect x="60" y="100" width="310" height="40" rx="8" fill="#0d4b3c"/>
+  <rect x="60" y="132" width="310" height="8" fill="#0d4b3c"/>
+  <text x="215" y="126" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">users</text>
+
+  <rect x="75" y="155" width="28" height="16" rx="3" fill="#fce9d3"/>
+  <text x="89" y="167" text-anchor="middle" font-size="8" font-weight="800" fill="#a04e0b">PK</text>
+  <text x="115" y="167" font-size="12" font-weight="700" fill="#0d4b3c">id</text>
+  <text x="280" y="167" font-size="11" fill="#64756e" text-anchor="end">INTEGER AUTOINCREMENT</text>
+  <line x1="75" y1="178" x2="355" y2="178" stroke="#dce4d9" stroke-width="1"/>
+
+  <rect x="75" y="190" width="28" height="16" rx="3" fill="#dff0e8"/>
+  <text x="89" y="202" text-anchor="middle" font-size="8" font-weight="800" fill="#146343">UQ</text>
+  <text x="115" y="202" font-size="12" font-weight="700" fill="#0d4b3c">email</text>
+  <text x="280" y="202" font-size="11" fill="#64756e" text-anchor="end">TEXT NOT NULL</text>
+  <line x1="75" y1="213" x2="355" y2="213" stroke="#dce4d9" stroke-width="1"/>
+
+  <text x="115" y="237" font-size="12" font-weight="700" fill="#0d4b3c">password_hash</text>
+  <text x="280" y="237" font-size="11" fill="#64756e" text-anchor="end">TEXT NOT NULL (128-char hex)</text>
+  <line x1="75" y1="248" x2="355" y2="248" stroke="#dce4d9" stroke-width="1"/>
+
+  <text x="115" y="272" font-size="12" font-weight="700" fill="#0d4b3c">salt</text>
+  <text x="280" y="272" font-size="11" fill="#64756e" text-anchor="end">TEXT NOT NULL (32-char hex)</text>
+  <line x1="75" y1="283" x2="355" y2="283" stroke="#dce4d9" stroke-width="1"/>
+
+  <text x="115" y="307" font-size="12" font-weight="700" fill="#0d4b3c">created_at</text>
+  <text x="280" y="307" font-size="11" fill="#64756e" text-anchor="end">TEXT DEFAULT datetime('now')</text>
+
+  <text x="215" y="405" text-anchor="middle" font-size="10" fill="#64756e">Password hashed with crypto.scrypt</text>
+  <text x="215" y="420" text-anchor="middle" font-size="10" fill="#64756e">Random 16-byte salt per user</text>
+
+  <rect x="440" y="100" width="310" height="220" rx="8" fill="#fff" stroke="#0d4b3c" stroke-width="2"/>
+  <rect x="440" y="100" width="310" height="40" rx="8" fill="#0d4b3c"/>
+  <rect x="440" y="132" width="310" height="8" fill="#0d4b3c"/>
+  <text x="595" y="126" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">sessions</text>
+
+  <rect x="455" y="155" width="28" height="16" rx="3" fill="#fce9d3"/>
+  <text x="469" y="167" text-anchor="middle" font-size="8" font-weight="800" fill="#a04e0b">PK</text>
+  <text x="495" y="167" font-size="12" font-weight="700" fill="#0d4b3c">token</text>
+  <text x="660" y="167" font-size="11" fill="#64756e" text-anchor="end">TEXT (64-char hex, 32 bytes)</text>
+  <line x1="455" y1="178" x2="735" y2="178" stroke="#dce4d9" stroke-width="1"/>
+
+  <rect x="455" y="190" width="28" height="16" rx="3" fill="#e9ecea"/>
+  <text x="469" y="202" text-anchor="middle" font-size="8" font-weight="800" fill="#59635e">FK</text>
+  <text x="495" y="202" font-size="12" font-weight="700" fill="#0d4b3c">user_id</text>
+  <text x="660" y="202" font-size="11" fill="#64756e" text-anchor="end">INTEGER NOT NULL</text>
+  <line x1="455" y1="213" x2="735" y2="213" stroke="#dce4d9" stroke-width="1"/>
+
+  <text x="495" y="237" font-size="12" font-weight="700" fill="#0d4b3c">expires_at</text>
+  <text x="660" y="237" font-size="11" fill="#64756e" text-anchor="end">TEXT NOT NULL (ISO-8601)</text>
+
+  <line x1="370" y1="200" x2="440" y2="200" stroke="#0d4b3c" stroke-width="2"/>
+  <line x1="370" y1="193" x2="370" y2="207" stroke="#0d4b3c" stroke-width="2"/>
+  <line x1="430" y1="193" x2="440" y2="200" stroke="#0d4b3c" stroke-width="2"/>
+  <line x1="430" y1="207" x2="440" y2="200" stroke="#0d4b3c" stroke-width="2"/>
+  <line x1="430" y1="200" x2="440" y2="200" stroke="#0d4b3c" stroke-width="2"/>
+
+  <text x="405" y="188" text-anchor="middle" font-size="10" font-weight="700" fill="#148064">1 : N</text>
+
+  <text x="595" y="345" text-anchor="middle" font-size="10" fill="#64756e">Token: crypto.randomBytes(32)</text>
+  <text x="595" y="360" text-anchor="middle" font-size="10" fill="#64756e">24-hour expiry, hourly cleanup</text>
+  <text x="595" y="375" text-anchor="middle" font-size="10" fill="#64756e">ON DELETE CASCADE on user_id</text>
+</svg>

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" font-family="Inter,Arial,sans-serif">
+  <rect width="960" height="780" fill="#f7f3e9"/>
+  <text x="480" y="38" text-anchor="middle" font-size="20" font-weight="800" fill="#0d4b3c">Data Flow &amp; Scoring Engine</text>
+  <text x="480" y="58" text-anchor="middle" font-size="11" fill="#64756e">villages.json → Weighted Scoring → Priority Tiers + Confidence Levels</text>
+
+  <!-- Source Data -->
+  <rect x="40" y="80" width="200" height="200" rx="8" fill="#0d4b3c"/>
+  <text x="140" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">villages.json</text>
+  <text x="140" y="130" text-anchor="middle" font-size="10" fill="#b9d4c5">15 supplied locations</text>
+  <line x1="60" y1="145" x2="220" y2="145" stroke="#327563" stroke-width="0.5"/>
+  <text x="60" y="165" font-size="10" fill="#b9d4c5">&#x2022; id, village, district</text>
+  <text x="60" y="182" font-size="10" fill="#b9d4c5">&#x2022; tehsil, population</text>
+  <text x="60" y="199" font-size="10" fill="#b9d4c5">&#x2022; latitude, longitude</text>
+  <text x="60" y="216" font-size="10" fill="#b9d4c5">&#x2022; flood_risk, accessibility</text>
+  <text x="60" y="233" font-size="10" fill="#b9d4c5">&#x2022; distance_km, has_bhu</text>
+  <text x="60" y="250" font-size="10" fill="#b9d4c5">&#x2022; populationVerified</text>
+  <text x="60" y="267" font-size="10" fill="#b9d4c5">&#x2022; confidence level</text>
+
+  <!-- Arrow -->
+  <line x1="240" y1="180" x2="300" y2="180" stroke="#148064" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Scoring Engine -->
+  <rect x="300" y="80" width="360" height="320" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="480" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#0d4b3c">Scoring Engine (server.js)</text>
+  <text x="480" y="126" text-anchor="middle" font-size="10" fill="#64756e">scored(v, i) — weighted rule-based calculation</text>
+  <line x1="320" y1="140" x2="640" y2="140" stroke="#dce4d9" stroke-width="1"/>
+
+  <!-- Weights -->
+  <text x="330" y="165" font-size="12" font-weight="700" fill="#0d4b3c">Weight Table</text>
+  <rect x="330" y="175" width="300" height="24" rx="4" fill="#edf6ef"/>
+  <text x="340" y="192" font-size="11" fill="#148064" font-weight="600">Flood risk</text>
+  <text x="600" y="192" font-size="11" fill="#0d4b3c" font-weight="700" text-anchor="end">40%</text>
+  <rect x="330" y="203" width="300" height="24" rx="4" fill="#fff"/>
+  <text x="340" y="220" font-size="11" fill="#17342c">Facility distance</text>
+  <text x="600" y="220" font-size="11" fill="#0d4b3c" font-weight="700" text-anchor="end">25%</text>
+  <rect x="330" y="231" width="300" height="24" rx="4" fill="#edf6ef"/>
+  <text x="340" y="248" font-size="11" fill="#148064">No BHU on site</text>
+  <text x="600" y="248" font-size="11" fill="#0d4b3c" font-weight="700" text-anchor="end">15%</text>
+  <rect x="330" y="259" width="300" height="24" rx="4" fill="#fff"/>
+  <text x="340" y="276" font-size="11" fill="#17342c">Road accessibility</text>
+  <text x="600" y="276" font-size="11" fill="#0d4b3c" font-weight="700" text-anchor="end">10%</text>
+  <rect x="330" y="287" width="300" height="24" rx="4" fill="#edf6ef"/>
+  <text x="340" y="304" font-size="11" fill="#148064">Verified population</text>
+  <text x="600" y="304" font-size="11" fill="#0d4b3c" font-weight="700" text-anchor="end">10%</text>
+
+  <line x1="320" y1="325" x2="640" y2="325" stroke="#dce4d9" stroke-width="1"/>
+  <text x="330" y="348" font-size="11" fill="#64756e">score = round(got / available × 100)</text>
+  <text x="330" y="368" font-size="11" fill="#64756e">Missing fields excluded from denominator</text>
+  <text x="330" y="388" font-size="11" fill="#64756e">RJ-09 admin population excluded from scoring</text>
+
+  <!-- Arrow to outputs -->
+  <line x1="660" y1="180" x2="710" y2="180" stroke="#148064" stroke-width="2" marker-end="url(#arr2)"/>
+  <line x1="660" y1="350" x2="710" y2="350" stroke="#148064" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <!-- Priority Tiers -->
+  <rect x="710" y="80" width="220" height="170" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="820" y="108" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Priority Tiers</text>
+  <rect x="730" y="120" width="180" height="24" rx="4" fill="#f8deda"/>
+  <text x="740" y="137" font-size="11" fill="#9c2d24" font-weight="600">Critical</text>
+  <text x="900" y="137" font-size="11" fill="#9c2d24" text-anchor="end">80–100</text>
+  <rect x="730" y="148" width="180" height="24" rx="4" fill="#fce9d3"/>
+  <text x="740" y="165" font-size="11" fill="#a04e0b" font-weight="600">High</text>
+  <text x="900" y="165" font-size="11" fill="#a04e0b" text-anchor="end">60–79</text>
+  <rect x="730" y="176" width="180" height="24" rx="4" fill="#f9f0c9"/>
+  <text x="740" y="193" font-size="11" fill="#896400" font-weight="600">Medium</text>
+  <text x="900" y="193" font-size="11" fill="#896400" text-anchor="end">40–59</text>
+  <rect x="730" y="204" width="180" height="24" rx="4" fill="#dff0e8"/>
+  <text x="740" y="221" font-size="11" fill="#146343" font-weight="600">Low</text>
+  <text x="900" y="221" font-size="11" fill="#146343" text-anchor="end">0–39</text>
+
+  <!-- Confidence -->
+  <rect x="710" y="270" width="220" height="130" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="820" y="298" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Data Confidence</text>
+  <rect x="730" y="310" width="180" height="24" rx="4" fill="#dff0e8"/>
+  <text x="740" y="327" font-size="11" fill="#146343" font-weight="600">High</text>
+  <text x="900" y="327" font-size="11" fill="#146343" text-anchor="end">≥ 75%</text>
+  <rect x="730" y="338" width="180" height="24" rx="4" fill="#f9f0c9"/>
+  <text x="740" y="355" font-size="11" fill="#896400" font-weight="600">Medium</text>
+  <text x="900" y="355" font-size="11" fill="#896400" text-anchor="end">45–74%</text>
+  <rect x="730" y="366" width="180" height="24" rx="4" fill="#f8deda"/>
+  <text x="740" y="383" font-size="11" fill="#9c2d24" font-weight="600">Low</text>
+  <text x="900" y="383" font-size="11" fill="#9c2d24" text-anchor="end">&lt; 45%</text>
+
+  <!-- Frontend Outputs -->
+  <rect x="40" y="430" width="880" height="110" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="480" y="458" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Frontend Outputs (app.js + enhancements.js)</text>
+  <line x1="480" y1="400" x2="480" y2="430" stroke="#148064" stroke-width="2" marker-end="url(#arr2)"/>
+
+  <rect x="65" y="475" width="150" height="45" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="140" y="495" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">Leaflet Map</text>
+  <text x="140" y="511" text-anchor="middle" font-size="10" fill="#64756e">Color-coded markers</text>
+
+  <rect x="235" y="475" width="150" height="45" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="310" y="495" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">Priority Rankings</text>
+  <text x="310" y="511" text-anchor="middle" font-size="10" fill="#64756e">Sortable table</text>
+
+  <rect x="405" y="475" width="150" height="45" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="480" y="495" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">Location Detail</text>
+  <text x="480" y="511" text-anchor="middle" font-size="10" fill="#64756e">Score breakdown bars</text>
+
+  <rect x="575" y="475" width="150" height="45" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="650" y="495" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">KPI Summary</text>
+  <text x="650" y="511" text-anchor="middle" font-size="10" fill="#64756e">6 aggregate metrics</text>
+
+  <rect x="745" y="475" width="150" height="45" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="820" y="495" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">CSV Export</text>
+  <text x="820" y="511" text-anchor="middle" font-size="10" fill="#64756e">Full dataset download</text>
+
+  <!-- Data Quality -->
+  <rect x="40" y="570" width="880" height="90" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="480" y="598" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Data Quality Checks (qualityReport)</text>
+  <text x="120" y="622" font-size="11" fill="#64756e">&#x2022; Duplicate source IDs</text>
+  <text x="310" y="622" font-size="11" fill="#64756e">&#x2022; Missing GPS coordinates</text>
+  <text x="510" y="622" font-size="11" fill="#64756e">&#x2022; Unverified population</text>
+  <text x="710" y="622" font-size="11" fill="#64756e">&#x2022; Unknown flood/access</text>
+  <text x="120" y="645" font-size="10" fill="#148064" font-weight="600">Missing data → Survey Required → Field Verification → Data Updated → Priority Recalculated</text>
+
+  <!-- Filters -->
+  <rect x="40" y="685" width="880" height="70" rx="8" fill="#0d4b3c"/>
+  <text x="480" y="713" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Client-Side Filters</text>
+  <text x="130" y="738" font-size="11" fill="#b9d4c5">District</text>
+  <text x="260" y="738" font-size="11" fill="#b9d4c5">Tehsil</text>
+  <text x="380" y="738" font-size="11" fill="#b9d4c5">Priority</text>
+  <text x="510" y="738" font-size="11" fill="#b9d4c5">Flood Risk</text>
+  <text x="650" y="738" font-size="11" fill="#b9d4c5">Confidence</text>
+  <text x="800" y="738" font-size="11" fill="#b9d4c5">Search (village name)</text>
+
+  <defs><marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#148064"/></marker></defs>
+</svg>

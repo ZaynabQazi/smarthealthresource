@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" font-family="Inter,Arial,sans-serif">
+  <rect width="960" height="720" fill="#f7f3e9"/>
+  <text x="480" y="38" text-anchor="middle" font-size="20" font-weight="800" fill="#0d4b3c">Deployment Architecture</text>
+  <text x="480" y="58" text-anchor="middle" font-size="11" fill="#64756e">Current Deployment → Production Deployment Path</text>
+
+  <!-- Current Deployment -->
+  <rect x="40" y="85" width="880" height="230" rx="10" fill="#fff" stroke="#148064" stroke-width="2"/>
+  <text x="60" y="113" font-size="14" font-weight="800" fill="#0d4b3c">Current Deployment</text>
+  <rect x="75" y="125" width="120" height="20" rx="4" fill="#dff0e8"/>
+  <text x="135" y="139" text-anchor="middle" font-size="9" fill="#146343" font-weight="700">BUILT</text>
+
+  <!-- Local dev -->
+  <rect x="60" y="155" width="250" height="140" rx="8" fill="#edf6ef" stroke="#dce4d9"/>
+  <text x="185" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Single Node.js Process</text>
+  <text x="185" y="198" text-anchor="middle" font-size="10" fill="#64756e">node server/server.js</text>
+  <line x1="80" y1="210" x2="290" y2="210" stroke="#dce4d9" stroke-width="0.5"/>
+  <text x="80" y="228" font-size="10" fill="#17342c">&#x2022; HTTP server (port 3000)</text>
+  <text x="80" y="245" font-size="10" fill="#17342c">&#x2022; Static file serving (src/)</text>
+  <text x="80" y="262" font-size="10" fill="#17342c">&#x2022; API routes (/api/*)</text>
+  <text x="80" y="279" font-size="10" fill="#17342c">&#x2022; SQLite (users.db, local file)</text>
+
+  <!-- Dependencies -->
+  <rect x="330" y="155" width="250" height="140" rx="8" fill="#edf6ef" stroke="#dce4d9"/>
+  <text x="455" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Dependencies</text>
+  <line x1="350" y1="190" x2="560" y2="190" stroke="#dce4d9" stroke-width="0.5"/>
+  <text x="350" y="210" font-size="10" fill="#17342c">&#x2022; better-sqlite3 (auth storage)</text>
+  <text x="350" y="227" font-size="10" fill="#17342c">&#x2022; Node.js built-in http, fs, path</text>
+  <text x="350" y="244" font-size="10" fill="#17342c">&#x2022; Node.js built-in crypto</text>
+  <text x="350" y="261" font-size="10" fill="#17342c">&#x2022; Leaflet.js (CDN, map tiles)</text>
+  <text x="350" y="278" font-size="10" fill="#17342c">&#x2022; Google Fonts (CDN, Inter + Urdu)</text>
+
+  <!-- External -->
+  <rect x="600" y="155" width="300" height="140" rx="8" fill="#fce9d3" stroke="#dc7417"/>
+  <text x="750" y="178" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Optional External</text>
+  <line x1="620" y1="190" x2="880" y2="190" stroke="#efd7ae" stroke-width="0.5"/>
+  <text x="620" y="210" font-size="10" fill="#a04e0b">&#x2022; Grok API (api.x.ai) — AI fallback</text>
+  <text x="620" y="227" font-size="10" fill="#a04e0b">&#x2022; OpenStreetMap tiles (map imagery)</text>
+  <text x="620" y="244" font-size="10" fill="#a04e0b">&#x2022; WHO / NDMA / PBS (chat sources)</text>
+  <text x="620" y="261" font-size="10" fill="#a04e0b">&#x2022; All optional — app works offline</text>
+  <text x="620" y="278" font-size="10" fill="#a04e0b">&#x2022; .env for API keys</text>
+
+  <!-- Arrow down -->
+  <line x1="480" y1="315" x2="480" y2="355" stroke="#148064" stroke-width="2" marker-end="url(#arr4)"/>
+  <text x="480" y="340" text-anchor="middle" font-size="10" fill="#148064" font-weight="700">PRODUCTION TARGET</text>
+
+  <!-- Production Architecture -->
+  <rect x="40" y="355" width="880" height="340" rx="10" fill="#fff" stroke="#dce4d9" stroke-width="2"/>
+  <text x="60" y="383" font-size="14" font-weight="800" fill="#0d4b3c">Production Deployment (Alibaba Cloud)</text>
+  <rect x="75" y="395" width="120" height="20" rx="4" fill="#f9f0c9"/>
+  <text x="135" y="409" text-anchor="middle" font-size="9" fill="#896400" font-weight="700">FUTURE</text>
+
+  <!-- Cloud services -->
+  <rect x="60" y="425" width="190" height="120" rx="8" fill="#edf6ef" stroke="#148064"/>
+  <text x="155" y="448" text-anchor="middle" font-size="11" font-weight="700" fill="#0d4b3c">Alibaba Cloud ECS</text>
+  <text x="155" y="465" text-anchor="middle" font-size="9" fill="#64756e">or Function Compute</text>
+  <line x1="80" y1="475" x2="230" y2="475" stroke="#dce4d9" stroke-width="0.5"/>
+  <text x="80" y="493" font-size="10" fill="#17342c">&#x2022; Node.js runtime</text>
+  <text x="80" y="510" font-size="10" fill="#17342c">&#x2022; PM2 process manager</text>
+  <text x="80" y="527" font-size="10" fill="#17342c">&#x2022; Nginx reverse proxy</text>
+
+  <rect x="270" y="425" width="190" height="120" rx="8" fill="#edf6ef" stroke="#148064"/>
+  <text x="365" y="448" text-anchor="middle" font-size="11" font-weight="700" fill="#0d4b3c">Database Layer</text>
+  <line x1="290" y1="460" x2="440" y2="460" stroke="#dce4d9" stroke-width="0.5"/>
+  <text x="290" y="478" font-size="10" fill="#17342c">&#x2022; PostgreSQL / RDS</text>
+  <text x="290" y="495" font-size="10" fill="#17342c">&#x2022; Encrypted at rest</text>
+  <text x="290" y="512" font-size="10" fill="#17342c">&#x2022; Automated backups</text>
+  <text x="290" y="529" font-size="10" fill="#17342c">&#x2022; Session store (Redis)</text>
+
+  <rect x="480" y="425" width="190" height="120" rx="8" fill="#edf6ef" stroke="#148064"/>
+  <text x="575" y="448" text-anchor="middle" font-size="11" font-weight="700" fill="#0d4b3c">CDN &amp; Security</text>
+  <line x1="500" y1="460" x2="650" y2="460" stroke="#dce4d9" stroke-width="0.5"/>
+  <text x="500" y="478" font-size="10" fill="#17342c">&#x2022; Alibaba Cloud CDN</text>
+  <text x="500" y="495" font-size="10" fill="#17342c">&#x2022; SSL/TLS certificates</text>
+  <text x="500" y="512" font-size="10" fill="#17342c">&#x2022; WAF rules</text>
+  <text x="500" y="529" font-size="10" fill="#17342c">&#x2022; Rate limiting</text>
+
+  <rect x="690" y="425" width="210" height="120" rx="8" fill="#fce9d3" stroke="#dc7417"/>
+  <text x="795" y="448" text-anchor="middle" font-size="11" font-weight="700" fill="#0d4b3c">Monitoring</text>
+  <line x1="710" y1="460" x2="880" y2="460" stroke="#efd7ae" stroke-width="0.5"/>
+  <text x="710" y="478" font-size="10" fill="#a04e0b">&#x2022; Cloud Monitor (metrics)</text>
+  <text x="710" y="495" font-size="10" fill="#a04e0b">&#x2022; Log Service (audit)</text>
+  <text x="710" y="512" font-size="10" fill="#a04e0b">&#x2022; Alerting (incidents)</text>
+  <text x="710" y="529" font-size="10" fill="#a04e0b">&#x2022; Uptime health checks</text>
+
+  <!-- Production additions -->
+  <rect x="60" y="565" width="840" height="110" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="480" y="593" text-anchor="middle" font-size="12" font-weight="700" fill="#0d4b3c">Production Additions (planned)</text>
+  <line x1="80" y1="605" x2="880" y2="605" stroke="#dce4d9" stroke-width="0.5"/>
+
+  <text x="100" y="625" font-size="10" fill="#17342c">&#x2022; Role-based access control</text>
+  <text x="100" y="642" font-size="10" fill="#17342c">&#x2022; Audit logging</text>
+  <text x="100" y="659" font-size="10" fill="#17342c">&#x2022; Multi-tenant org separation</text>
+
+  <text x="340" y="625" font-size="10" fill="#17342c">&#x2022; Field data update workflow</text>
+  <text x="340" y="642" font-size="10" fill="#17342c">&#x2022; Production LLM deployment</text>
+  <text x="340" y="659" font-size="10" fill="#17342c">&#x2022; CI/CD pipeline</text>
+
+  <text x="600" y="625" font-size="10" fill="#17342c">&#x2022; Horizontal scaling</text>
+  <text x="600" y="642" font-size="10" fill="#17342c">&#x2022; Data encryption in transit</text>
+  <text x="600" y="659" font-size="10" fill="#17342c">&#x2022; Disaster recovery plan</text>
+
+  <defs><marker id="arr4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#148064"/></marker></defs>
+</svg>

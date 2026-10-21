@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter,Arial,sans-serif">
+  <rect width="800" height="500" fill="#f7f3e9"/>
+  <text x="400" y="35" text-anchor="middle" font-size="20" font-weight="800" fill="#0d4b3c">DFD Level 0 — Context Diagram</text>
+  <text x="400" y="55" text-anchor="middle" font-size="11" fill="#64756e">Single-process view: external entities and data flows</text>
+
+  <!-- Central process -->
+  <circle cx="400" cy="250" r="85" fill="#0d4b3c" stroke="#0d4b3c" stroke-width="2"/>
+  <text x="400" y="240" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Smart Health</text>
+  <text x="400" y="258" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Resource</text>
+  <text x="400" y="276" text-anchor="middle" font-size="14" font-weight="800" fill="#fff">Allocator</text>
+
+  <!-- NGO User (left) -->
+  <g transform="translate(90,250)">
+    <circle cx="0" cy="-18" r="16" fill="none" stroke="#148064" stroke-width="2.5"/>
+    <line x1="0" y1="-2" x2="0" y2="30" stroke="#148064" stroke-width="2.5"/>
+    <line x1="-20" y1="12" x2="20" y2="12" stroke="#148064" stroke-width="2.5"/>
+    <line x1="0" y1="30" x2="-15" y2="52" stroke="#148064" stroke-width="2.5"/>
+    <line x1="0" y1="30" x2="15" y2="52" stroke="#148064" stroke-width="2.5"/>
+    <text x="0" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#148064">NGO User</text>
+  </g>
+
+  <!-- External Data Sources (right) -->
+  <g transform="translate(710,250)">
+    <rect x="-55" y="-40" width="110" height="80" rx="8" fill="#fce9d3" stroke="#dc7417" stroke-width="2"/>
+    <text x="0" y="-18" text-anchor="middle" font-size="11" font-weight="700" fill="#a04e0b">WHO, NDMA,</text>
+    <text x="0" y="-2" text-anchor="middle" font-size="11" font-weight="700" fill="#a04e0b">Census, PBS,</text>
+    <text x="0" y="14" text-anchor="middle" font-size="11" font-weight="700" fill="#a04e0b">BHU, Rescue</text>
+    <text x="0" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#a04e0b">1122, OSM</text>
+  </g>
+
+  <!-- Grok API (bottom right) -->
+  <g transform="translate(630,420)">
+    <rect x="-55" y="-25" width="110" height="50" rx="8" fill="#fff" stroke="#dce4d9" stroke-width="2"/>
+    <text x="0" y="-5" text-anchor="middle" font-size="11" font-weight="700" fill="#0d4b3c">Grok API</text>
+    <text x="0" y="12" text-anchor="middle" font-size="10" fill="#64756e">(optional)</text>
+  </g>
+
+  <!-- Data flows: NGO User ↔ System -->
+  <line x1="130" y1="230" x2="315" y2="230" stroke="#148064" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <text x="222" y="222" text-anchor="middle" font-size="10" fill="#148064" font-weight="600">Login credentials, questions</text>
+
+  <line x1="315" y1="270" x2="130" y2="270" stroke="#148064" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <text x="222" y="290" text-anchor="middle" font-size="10" fill="#148064" font-weight="600">Dashboard, scores, answers</text>
+
+  <!-- Data flows: System ↔ External Sources -->
+  <line x1="485" y1="230" x2="655" y2="230" stroke="#dc7417" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <text x="570" y="222" text-anchor="middle" font-size="10" fill="#dc7417" font-weight="600">Topic queries</text>
+
+  <line x1="655" y1="270" x2="485" y2="270" stroke="#dc7417" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <text x="570" y="290" text-anchor="middle" font-size="10" fill="#dc7417" font-weight="600">Live health / disaster data</text>
+
+  <!-- Data flows: System ↔ Grok API -->
+  <line x1="460" y1="310" x2="575" y2="400" stroke="#64756e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr0)"/>
+  <text x="540" y="345" font-size="10" fill="#64756e" font-weight="600">Fallback questions</text>
+
+  <line x1="575" y1="415" x2="460" y2="325" stroke="#64756e" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr0)"/>
+  <text x="500" y="380" font-size="10" fill="#64756e" font-weight="600">AI-phrased answers</text>
+
+  <!-- villages.json data store -->
+  <g transform="translate(400,90)">
+    <rect x="-80" y="-18" width="160" height="36" rx="6" fill="#edf6ef" stroke="#148064" stroke-width="1.5"/>
+    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#148064">villages.json (15 records)</text>
+  </g>
+  <line x1="400" y1="108" x2="400" y2="165" stroke="#148064" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <text x="430" y="140" font-size="10" fill="#148064" font-weight="600">Dataset read</text>
+
+  <!-- SQLite DB -->
+  <g transform="translate(180,420)">
+    <rect x="-70" y="-18" width="140" height="36" rx="6" fill="#edf6ef" stroke="#148064" stroke-width="1.5"/>
+    <text x="0" y="5" text-anchor="middle" font-size="11" font-weight="700" fill="#148064">SQLite (users.db)</text>
+  </g>
+  <line x1="220" y1="400" x2="340" y2="310" stroke="#148064" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <line x1="340" y1="300" x2="220" y2="395" stroke="#148064" stroke-width="1.5" marker-end="url(#arr0)"/>
+  <text x="260" y="345" font-size="10" fill="#148064" font-weight="600">Auth / sessions</text>
+
+  <defs><marker id="arr0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#148064"/></marker></defs>
+</svg>

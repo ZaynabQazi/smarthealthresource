@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" font-family="Inter,Arial,sans-serif">
+  <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#148064"/></marker></defs>
+  <rect width="960" height="720" fill="#f7f3e9"/>
+  <text x="480" y="38" text-anchor="middle" font-size="20" font-weight="800" fill="#0d4b3c">Authentication Flow</text>
+  <text x="480" y="58" text-anchor="middle" font-size="11" fill="#64756e">Signup → Login → Session → Protected API Access</text>
+
+  <rect x="40" y="85" width="260" height="260" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="170" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Signup</text>
+  <rect x="65" y="125" width="210" height="30" rx="5" fill="#edf6ef" stroke="#dce4d9"/>
+  <text x="170" y="145" text-anchor="middle" font-size="11" fill="#17342c">POST /api/auth/signup</text>
+  <text x="170" y="172" text-anchor="middle" font-size="10" fill="#64756e">{ email, password }</text>
+  <line x1="170" y1="182" x2="170" y2="200" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="65" y="200" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="170" y="220" text-anchor="middle" font-size="11" fill="#148064">Validate input</text>
+  <line x1="170" y1="230" x2="170" y2="248" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="65" y="248" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="170" y="268" text-anchor="middle" font-size="11" fill="#148064">crypto.scrypt hash + salt</text>
+  <line x1="170" y1="278" x2="170" y2="296" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="65" y="296" width="210" height="30" rx="5" fill="#0d4b3c"/>
+  <text x="170" y="316" text-anchor="middle" font-size="11" fill="#fff">INSERT INTO users (SQLite)</text>
+
+  <rect x="350" y="85" width="260" height="310" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="480" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Login</text>
+  <rect x="375" y="125" width="210" height="30" rx="5" fill="#edf6ef" stroke="#dce4d9"/>
+  <text x="480" y="145" text-anchor="middle" font-size="11" fill="#17342c">POST /api/auth/login</text>
+  <text x="480" y="172" text-anchor="middle" font-size="10" fill="#64756e">{ email, password }</text>
+  <line x1="480" y1="182" x2="480" y2="200" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="375" y="200" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="480" y="220" text-anchor="middle" font-size="11" fill="#148064">Lookup user by email</text>
+  <line x1="480" y1="230" x2="480" y2="248" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="375" y="248" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="480" y="268" text-anchor="middle" font-size="11" fill="#148064">scrypt verify + timingSafeEqual</text>
+  <line x1="480" y1="278" x2="480" y2="296" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="375" y="296" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="480" y="316" text-anchor="middle" font-size="11" fill="#148064">Generate 32-byte random token</text>
+  <line x1="480" y1="326" x2="480" y2="344" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="375" y="344" width="210" height="30" rx="5" fill="#0d4b3c"/>
+  <text x="480" y="364" text-anchor="middle" font-size="11" fill="#fff">Set-Cookie: session (HttpOnly)</text>
+
+  <rect x="660" y="85" width="260" height="260" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="790" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Session Verify</text>
+  <rect x="685" y="125" width="210" height="30" rx="5" fill="#edf6ef" stroke="#dce4d9"/>
+  <text x="790" y="145" text-anchor="middle" font-size="11" fill="#17342c">GET /api/auth/verify</text>
+  <text x="790" y="172" text-anchor="middle" font-size="10" fill="#64756e">Cookie: session=token</text>
+  <line x1="790" y1="182" x2="790" y2="200" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="685" y="200" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="790" y="220" text-anchor="middle" font-size="11" fill="#148064">Lookup session in SQLite</text>
+  <line x1="790" y1="230" x2="790" y2="248" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="685" y="248" width="210" height="30" rx="5" fill="#fff" stroke="#148064"/>
+  <text x="790" y="268" text-anchor="middle" font-size="11" fill="#148064">Check expiry (24h)</text>
+  <line x1="790" y1="278" x2="790" y2="296" stroke="#148064" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="685" y="296" width="210" height="30" rx="5" fill="#0d4b3c"/>
+  <text x="790" y="316" text-anchor="middle" font-size="11" fill="#fff">{ authenticated: true/false }</text>
+
+  <rect x="40" y="420" width="880" height="120" rx="8" fill="#fff" stroke="#dce4d9"/>
+  <text x="480" y="448" text-anchor="middle" font-size="13" font-weight="700" fill="#0d4b3c">Protected API Routes (require valid session)</text>
+  <rect x="80" y="465" width="200" height="50" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="180" y="487" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">GET /api/data</text>
+  <text x="180" y="503" text-anchor="middle" font-size="10" fill="#64756e">Scored village dataset</text>
+  <rect x="310" y="465" width="200" height="50" rx="6" fill="#edf6ef" stroke="#148064"/>
+  <text x="410" y="487" text-anchor="middle" font-size="11" font-weight="600" fill="#148064">POST /api/chat</text>
+  <text x="410" y="503" text-anchor="middle" font-size="10" fill="#64756e">AI assistant queries</text>
+  <rect x="540" y="465" width="170" height="50" rx="6" fill="#fce9d3" stroke="#dc7417"/>
+  <text x="625" y="487" text-anchor="middle" font-size="11" font-weight="600" fill="#a04e0b">No session?</text>
+  <text x="625" y="503" text-anchor="middle" font-size="10" fill="#a04e0b">401 Unauthorized</text>
+  <rect x="740" y="465" width="150" height="50" rx="6" fill="#f8deda" stroke="#c83f34"/>
+  <text x="815" y="487" text-anchor="middle" font-size="11" font-weight="600" fill="#9c2d24">Expired?</text>
+  <text x="815" y="503" text-anchor="middle" font-size="10" fill="#9c2d24">401 → re-login</text>
+
+  <rect x="40" y="565" width="880" height="130" rx="8" fill="#0d4b3c"/>
+  <text x="480" y="593" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">Security Features</text>
+  <text x="120" y="620" font-size="11" fill="#b9d4c5">&#x2022; crypto.scrypt password hashing with random 16-byte salt</text>
+  <text x="120" y="640" font-size="11" fill="#b9d4c5">&#x2022; 32-byte cryptographically random session tokens</text>
+  <text x="120" y="660" font-size="11" fill="#b9d4c5">&#x2022; HttpOnly + SameSite=Strict cookies (24-hour expiry)</text>
+  <text x="530" y="620" font-size="11" fill="#b9d4c5">&#x2022; crypto.timingSafeEqual for constant-time comparison</text>
+  <text x="530" y="640" font-size="11" fill="#b9d4c5">&#x2022; Automatic expired-session cleanup (hourly)</text>
+  <text x="530" y="660" font-size="11" fill="#b9d4c5">&#x2022; Seed accounts created idempotently on startup</text>
+</svg>
